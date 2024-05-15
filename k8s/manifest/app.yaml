@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: template-solon-service
+  namespace: template_project
+  labels:
+    run: template-solon-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: template-solon-service
+  template:
+    metadata:
+      labels:
+        run: template-solon-service
+    spec:
+      containers:
+        - image: template-solon-service
+          imagePullPolicy: Never
+          name: template-solon-service
+          #资源需求
+          resources:
+            requests:
+              memory: 2G
+            limits:
+              memory: 2G
+          env:
+            - name: ENV
+              value: test
+#          volumeMounts:
+#            - name: logs-file
+#              mountPath: /app/logs/
+#      volumes:
+#      - name: logs-file
+#        persistentVolumeClaim:
+#          claimName: logs-file
+

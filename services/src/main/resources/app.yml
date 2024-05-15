@@ -1,0 +1,50 @@
+server:
+  port: 9090
+  contextPath: /api
+solon:
+  env: test
+  alone: 1
+
+solon.serialization.json:
+  dateAsFormat: 'yyyy-MM-dd HH:mm:ss'
+  dateAsTimeZone: 'GMT+8'
+  nullAsWriteable: true
+
+solon.staticfiles:
+  enable: false
+
+solon.logging.appender:
+  console:
+    level: DEBUG
+    enable: true
+  file:
+    name: "logs/log"
+    level: INFO
+    enable: true #是否启用
+    extension: ".log"
+    maxFileSize: "10 MB"
+    maxHistory: "7"
+solon.logging.logger:
+  "root":  #默认记录器配置
+    level: INFO
+  "com.yuemia.organon":
+    level: DEBUG
+
+knife4j:
+  enable: true
+  basic:
+    enable: true
+    username: doc
+    password: doc
+  setting:
+    enableOpenApi: false
+    enableSwaggerModels: false
+    enableFooter: false
+
+pagehelper:
+  offsetAsPageNum: true
+  rowBoundsWithCount: true
+  pageSizeZero: true
+  reasonable: true
+  params: pageNum=pageHelperStart;pageSize=pageHelperRows;
+  supportMethodsArguments: false
