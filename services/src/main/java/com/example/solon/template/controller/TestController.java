@@ -69,6 +69,13 @@ public class TestController {
             //把它转为本地文件
             file.transferTo(FileUtil.createTempFile("test", "logo.jpg", true));
             //用完之后，删除"可能的"临时文件 //v2.7.2 后支持
+            /*
+             * 如果过滤器中添加了
+             * if (ctx.isMultipartFormData()) {
+             *   ctx.filesDelete(); //v2.7.3 后支持
+             * }
+             * 则不需要手动删除
+             */
             file.delete();
         } catch (IOException e) {
             log.warn(e.getMessage(), e);
