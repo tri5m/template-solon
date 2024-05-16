@@ -12,7 +12,11 @@ import org.noear.solon.validation.ValidatorException;
 import org.smartboot.http.common.enums.HttpStatus;
 
 /**
- * @title: 全局的异常处理
+ * @title: 全局的异常处理，全局过滤器，优先级最高，环绕型
+ * <p>
+ * request -> Filter -> StaticResource -> RouterInterceptor
+ * -> Action(Handler controller)  -> RouterInterceptor后  -> Filter后  -> response
+ *<p>控制器里的 @Mapping 函数，即为 Action</p>
  * @author: trifolium.wang
  * @date: 2024/4/23
  */

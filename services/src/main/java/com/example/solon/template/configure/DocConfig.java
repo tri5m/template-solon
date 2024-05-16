@@ -1,10 +1,13 @@
 package com.example.solon.template.configure;
 
+import com.example.solon.template.common.response.ResponseResult;
 import com.github.xiaoymin.knife4j.solon.extension.OpenApiExtensionResolver;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;
 import org.noear.solon.annotation.Inject;
 import org.noear.solon.docs.DocDocket;
+import org.noear.solon.docs.models.ApiContact;
+import org.noear.solon.docs.models.ApiInfo;
 import org.noear.solon.docs.models.ApiScheme;
 
 /**
@@ -16,11 +19,9 @@ import org.noear.solon.docs.models.ApiScheme;
 public class DocConfig {
 
     @Inject
-    OpenApiExtensionResolver openApiExtensionResolver;
+    private OpenApiExtensionResolver openApiExtensionResolver;
 
-    /**
-     * 简单点的
-     */
+
     @Bean("appApi")
     public DocDocket appApi() {
         //根据情况增加 "knife4j.setting" （可选）
@@ -28,32 +29,16 @@ public class DocConfig {
                 .basicAuth(openApiExtensionResolver.getSetting().getBasic())
                 .vendorExtensions(openApiExtensionResolver.buildExtensions())
                 .groupName("app端接口")
+                .info(new ApiInfo().title("在线文档")
+                        .description("在线API文档")
+                        .contact(new ApiContact().name("trifolium.wang")
+                                .url("https://github.com/trifolium-x")
+                                .email("trifolium.wang@gmail.com"))
+                        .version("1.0"))
                 .schemes(ApiScheme.HTTP.toValue())
-                .apis("com.example.demo");
-
+                .globalResponseInData(true)
+                .globalResult(ResponseResult.class)
+                .apis("com.example.solon");
     }
 
-    /**
-     * 丰富点的
-     */
-//    @Bean("adminApi")
-//    public DocDocket adminApi() {
-//        //根据情况增加 "knife4j.setting" （可选）
-//        return new DocDocket()
-//                .basicAuth(openApiExtensionResolver.getSetting().getBasic())
-//                .vendorExtensions(openApiExtensionResolver.buildExtensions())
-//                .groupName("admin端接口")
-//                .info(new ApiInfo().title("在线文档")
-//                        .description("在线API文档")
-//                        .termsOfService("https://gitee.com/noear/solon")
-//                        .contact(new ApiContact().name("demo")
-//                                .url("https://gitee.com/noear/solon")
-//                                .email("demo@foxmail.com"))
-//                        .version("1.0"))
-//                .schemes(ApiScheme.HTTP.toValue(), ApiScheme.HTTPS.toValue())
-//                .globalResponseInData(true)
-//                .globalResult(Result.class)
-//                .apis("com.example.demo"); //可以加多条，以包名为单位
-//
-//    }
 }

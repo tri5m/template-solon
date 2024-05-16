@@ -1,6 +1,8 @@
 server:
   port: 9090
   contextPath: /api
+  request:
+    maxBodySize: 20mb
 solon:
   env: test
   alone: 1
@@ -9,9 +11,6 @@ solon.serialization.json:
   dateAsFormat: 'yyyy-MM-dd HH:mm:ss'
   dateAsTimeZone: 'GMT+8'
   nullAsWriteable: true
-
-solon.staticfiles:
-  enable: false
 
 solon.logging.appender:
   console:
@@ -27,7 +26,7 @@ solon.logging.appender:
 solon.logging.logger:
   "root":  #默认记录器配置
     level: INFO
-  "com.yuemia.organon":
+  "com.example.solon":
     level: DEBUG
 
 knife4j:
@@ -37,9 +36,24 @@ knife4j:
     username: doc
     password: doc
   setting:
-    enableOpenApi: false
-    enableSwaggerModels: false
+    enableOpenApi: true
+    enableSwaggerModels: true
     enableFooter: false
+
+mybatis:
+  master:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    typeAliases:
+      - "com.example.solon.template.dao.entity.*"
+    mappers:
+      - "classpath:mapper/*.xml"
+
+    # tk mybatis的配置
+    tk:
+      mapper:
+        style: camelhumpandlowercase
+        safe-update: true
+        safe-delete: true
 
 pagehelper:
   offsetAsPageNum: true
