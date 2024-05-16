@@ -15,6 +15,6 @@ docker run --name ${imageName} -d -p ${port}:${port} \
 --memory-reservation=512M --memory=512M --oom-kill-disable=true \
 -v /tmp/logs/${imageName}/${port}/logs:/app/logs
 ${imageName}:${version} --env=test
+## --solon.config.add=./app.yml 添加外部配置文件
 
-#--network=test-net --ip=172.20.0.6
 echo "启动完成."

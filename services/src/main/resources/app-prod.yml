@@ -5,3 +5,6 @@ database:
     driverClassName: com.mysql.cj.jdbc.Driver
     username: xxx
     password: xxx
+
+knife4j:
+  enable: false

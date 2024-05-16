@@ -4,7 +4,11 @@ server:
   request:
     maxBodySize: 20mb
 solon:
+  ## 可通过环境变量solon.env, 或者启动参数--env ,或者jvm参数 -Dsolon.env
   env: test
+  ## 漂移模式k8s部署设置为1，建议设置k8s环境变量solon.drift, 或者启动参数--drift
+  drift: 1
+  ## 是否是单体模式
   alone: 1
 
 solon.serialization.json:
@@ -30,7 +34,7 @@ solon.logging.logger:
     level: DEBUG
 
 knife4j:
-  enable: true
+  enable: false
   basic:
     enable: true
     username: doc

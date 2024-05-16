@@ -26,8 +26,10 @@ spec:
             limits:
               memory: 2G
           env:
-            - name: ENV
-              value: test
+            - name: solon.env
+              value: prod
+            - name: solon.drift
+              value: '1'
 #          volumeMounts:
 #            - name: logs-file
 #              mountPath: /app/logs/

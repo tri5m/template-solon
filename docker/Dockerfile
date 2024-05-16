@@ -13,7 +13,7 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' 
 
 WORKDIR /app
 
-COPY target/template-solon-service.jar /app/app.jar
+COPY services/target/template-solon-service.jar /app/app.jar
 
 ENTRYPOINT ["java", "-XX:+UseContainerSupport", "-XX:InitialRAMPercentage=70.0", \
 "-XX:MaxRAMPercentage=70.0", "-jar", "app.jar"]
