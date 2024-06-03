@@ -16,7 +16,7 @@ import org.noear.solon.web.cors.CrossFilter;
 public class App {
     public static void main(String[] args) {
 
-        log.info("应用启动标记====> solonVersion:{}, time:{}，", Solon.version(), DateUtil.getDatetimeStr());
+        log.info("应用启动标记====> solonVersion:{}, time:{}", Solon.version(), DateUtil.getDatetimeStr());
         Solon.start(App.class, args, app -> {
             log.info("启动环境====> env:{}", app.cfg().env());
             app.filter(-1, new CrossFilter().allowedOrigins("*"));
