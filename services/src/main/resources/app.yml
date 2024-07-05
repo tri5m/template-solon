@@ -51,7 +51,6 @@ mybatis:
       - "com.example.solon.template.dao.entity.*"
     mappers:
       - "classpath:mapper/*.xml"
-
     # tk mybatis的配置
     tk:
       mapper:
