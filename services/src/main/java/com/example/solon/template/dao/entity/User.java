@@ -1,6 +1,8 @@
 package com.example.solon.template.dao.entity;
 
 import org.noear.snack.core.utils.DateUtil;
+import org.noear.solon.validation.annotation.Max;
+import org.noear.solon.validation.annotation.Min;
 import tk.mybatis.mapper.annotation.LogicDelete;
 
 import javax.persistence.Column;
@@ -19,6 +21,8 @@ public class User {
     @Column(name = "`name`")
     private String name;
 
+    @Max(value = 150, message = "最大岁数为150岁")
+    @Min(0)
     @Column(name = "age")
     private Integer age;
 

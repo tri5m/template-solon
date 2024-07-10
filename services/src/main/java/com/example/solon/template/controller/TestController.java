@@ -2,6 +2,7 @@ package com.example.solon.template.controller;
 
 import cn.hutool.core.io.FileUtil;
 import com.example.solon.template.common.aop.TokenValidator;
+import com.example.solon.template.common.helper.exception.BizException;
 import com.example.solon.template.common.response.ResponseResult;
 import com.example.solon.template.dao.entity.User;
 import com.example.solon.template.dao.mapper.UserMapper;
@@ -9,16 +10,20 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.noear.solon.annotation.*;
+import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.MethodType;
 import org.noear.solon.core.handle.UploadedFile;
+import org.noear.solon.validation.ValidatorException;
+import org.noear.solon.validation.annotation.NotNull;
 import org.noear.solon.validation.annotation.Valid;
 import org.noear.solon.validation.annotation.Validated;
 
 import java.io.IOException;
 
 @Slf4j
-@Valid
 @Api(tags = "一些基础demo接口")
+@Valid
+@Mapping("/test")
 @Controller
 public class TestController {
 
@@ -50,6 +55,23 @@ public class TestController {
         return ResponseResult.success();
     }
 
+    @ApiOperation(value = "测试异常")
+    @Post
+    @Mapping("/test-error")
+    public ResponseResult<Void> error(@Validated @Body User user,
+                                      @NotNull(message = "tag不能为null") @Param(value = "tag") String tag) {
+
+//        throw new RuntimeException("asdf");
+        return ResponseResult.success();
+    }
+
+    @ApiOperation(value = "测试302")
+    @Get
+    @Mapping("/test-302")
+    public void t302() {
+
+        Context.current().redirect("https://spring.org");
+    }
 
     /**
      * 可用 UploadedFile[] file 多文件上传
