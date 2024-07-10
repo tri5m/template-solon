@@ -61,6 +61,7 @@ public class TestController {
     public ResponseResult<Void> error(@Validated @Body User user,
                                       @NotNull(message = "tag不能为null") @Param(value = "tag") String tag) {
 
+        // 📢注意Solon的验证必须要Content-type严格，否则无法正确反序列化Body,验证会失败
 //        throw new RuntimeException("asdf");
         return ResponseResult.success();
     }

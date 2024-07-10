@@ -3,6 +3,7 @@ package com.example.solon.template.dao.entity;
 import org.noear.snack.core.utils.DateUtil;
 import org.noear.solon.validation.annotation.Max;
 import org.noear.solon.validation.annotation.Min;
+import org.noear.solon.validation.annotation.NotNull;
 import tk.mybatis.mapper.annotation.LogicDelete;
 
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import java.util.Date;
 public class User {
     @Id
     @Column(name = "id")
+    @NotNull(message = "ahahah")
     @GeneratedValue(generator = "JDBC")
     private Long id;
 

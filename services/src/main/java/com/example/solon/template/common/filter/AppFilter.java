@@ -25,6 +25,9 @@ public class AppFilter implements Filter {
     @Override
     public void doFilter(Context ctx, FilterChain chain) throws Throwable {
         try {
+//            if("json".equals(ctx.contentType())){
+//                ctx.headerMap().put("Content-Type", "application/json");
+//            }
             chain.doFilter(ctx);
         } catch (StatusException e) {
             if (e.getCode() == 404) {
