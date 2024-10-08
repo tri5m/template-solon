@@ -2,7 +2,6 @@ package com.example.solon.template.controller;
 
 import cn.hutool.core.io.FileUtil;
 import com.example.solon.template.common.aop.TokenValidator;
-import com.example.solon.template.common.helper.exception.BizException;
 import com.example.solon.template.common.response.ResponseResult;
 import com.example.solon.template.dao.entity.User;
 import com.example.solon.template.dao.mapper.UserMapper;
@@ -13,7 +12,6 @@ import org.noear.solon.annotation.*;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.MethodType;
 import org.noear.solon.core.handle.UploadedFile;
-import org.noear.solon.validation.ValidatorException;
 import org.noear.solon.validation.annotation.NotNull;
 import org.noear.solon.validation.annotation.Valid;
 import org.noear.solon.validation.annotation.Validated;
@@ -35,7 +33,7 @@ public class TestController {
     @ApiOperation(value = "测试get")
     @Mapping(value = "/get-user", method = MethodType.GET)
     public ResponseResult<User> hello(@Param(name = "id", required = true) Long id) {
-        return ResponseResult.success(userMapper.selectByPrimaryKey(id));
+        return ResponseResult.success(userMapper.getById(id));
     }
 
     @ApiOperation(value = "测试aop")
@@ -50,7 +48,7 @@ public class TestController {
     @Post
     @Mapping("/save")
     public ResponseResult<Void> save(@Validated @Body User user) {
-        userMapper.insert(user);
+        userMapper.save(user);
 
         return ResponseResult.success();
     }

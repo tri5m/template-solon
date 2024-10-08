@@ -22,7 +22,7 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon-api</artifactId>
+            <artifactId>solon-web</artifactId>
         </dependency>
 
 <!--        <dependency>-->
@@ -32,17 +32,17 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.boot.undertow</artifactId>
+            <artifactId>solon-boot-undertow</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.serialization.jackson</artifactId>
+            <artifactId>solon-serialization-jackson</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.logging.logback</artifactId>
+            <artifactId>solon-logging-logback</artifactId>
         </dependency>
 
         <dependency>
@@ -52,17 +52,13 @@
 
         <dependency>
             <groupId>org.noear</groupId>
-            <artifactId>solon.validation</artifactId>
+            <artifactId>solon-security-validation</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>mybatis-tkmapper-solon-plugin</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.noear</groupId>
-            <artifactId>mybatis-pagehelper-solon-plugin</artifactId>
+            <groupId>cn.mybatis-mp</groupId>
+            <artifactId>mybatis-mp-solon-plugin</artifactId>
+            <version>1.6.9</version>
         </dependency>
 
 <!--        <dependency>-->
