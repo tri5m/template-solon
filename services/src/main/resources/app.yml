@@ -32,6 +32,8 @@ solon.logging.logger:
     level: INFO
   "com.example.solon":
     level: DEBUG
+  "cn.xbatis":
+    level: DEBUG
 
 knife4j:
   enable: false

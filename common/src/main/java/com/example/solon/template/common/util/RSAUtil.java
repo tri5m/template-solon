@@ -19,9 +19,12 @@ import java.util.Map;
 
 /**
  * 非对称加密算法RSA算法组件
+ *
+ * @author: trifolium.wang
+ * @date: 2024/9/24
  */
 @Slf4j
-public class RSACoder {
+public class RSAUtil {
 
     //非对称密钥算法
     private static final String KEY_ALGORITHM = "RSA";
@@ -78,8 +81,8 @@ public class RSACoder {
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
         //将密钥存储在map中
         Map<String, String> keyMap = new HashMap<>();
-        keyMap.put(PUBLIC_KEY, RSACoder.getPublicKey(publicKey));
-        keyMap.put(PRIVATE_KEY, RSACoder.getPrivateKey(privateKey));
+        keyMap.put(PUBLIC_KEY, RSAUtil.getPublicKey(publicKey));
+        keyMap.put(PRIVATE_KEY, RSAUtil.getPrivateKey(privateKey));
 
         log.debug("公钥：{}", keyMap.get(PUBLIC_KEY));
         log.debug("私钥：{}", keyMap.get(PRIVATE_KEY));
@@ -239,9 +242,8 @@ public class RSACoder {
 
         }
         byteArrayOutputStream.close();
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
 
-        return new String(byteArray, StandardCharsets.UTF_8);
+        return byteArrayOutputStream.toString(StandardCharsets.UTF_8);
     }
 
     /**

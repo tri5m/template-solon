@@ -1,5 +1,6 @@
-package com.example.solon.template.common.response;
+package com.example.solon.template.model.common.response;
 
+import cn.xbatis.core.mybatis.mapper.context.Pager;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -53,6 +54,20 @@ public class Paging<T> {
     public void setTotalCount(long totalCount) {
         this.totalCount = totalCount;
         this.pageCount = (int) (totalCount / pageSize) + (totalCount % pageSize == 0 ? 0 : 1);
+    }
+
+    public static <T> Paging<T> of(Pager<T> mpPage) {
+        return new Paging<>(mpPage);
+    }
+
+    public Paging(Pager<T> mpPage) {
+        this.pageIndex = mpPage.getNumber();
+        this.pageSize = mpPage.getSize();
+        this.totalCount = mpPage.getTotal();
+        this.pageCount = (int) (totalCount / pageSize) + (totalCount % pageSize == 0 ? 0 : 1);
+        if (mpPage.getResults() != null) {
+            this.data = mpPage.getResults();
+        }
     }
 
 }

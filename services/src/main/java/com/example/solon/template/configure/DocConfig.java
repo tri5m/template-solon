@@ -1,6 +1,6 @@
 package com.example.solon.template.configure;
 
-import com.example.solon.template.common.response.ResponseResult;
+import com.example.solon.template.model.common.response.ResponseResult;
 import com.github.xiaoymin.knife4j.solon.extension.OpenApiExtensionResolver;
 import org.noear.solon.annotation.Bean;
 import org.noear.solon.annotation.Configuration;

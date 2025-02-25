@@ -1,9 +1,9 @@
 package com.example.solon.template.dao.entity;
 
-import cn.mybatis.mp.db.annotations.LogicDelete;
-import cn.mybatis.mp.db.annotations.Table;
-import cn.mybatis.mp.db.annotations.TableField;
-import cn.mybatis.mp.db.annotations.TableId;
+import cn.xbatis.db.annotations.LogicDelete;
+import cn.xbatis.db.annotations.Table;
+import cn.xbatis.db.annotations.TableField;
+import cn.xbatis.db.annotations.TableId;
 import lombok.Data;
 import org.noear.snack.core.utils.DateUtil;
 import org.noear.solon.validation.annotation.Max;
@@ -17,10 +17,11 @@ import java.util.Date;
 public class User {
 
     @TableId
-    @NotNull(message = "ahahah")
+
     private Long id;
 
     @TableField
+    @NotNull(message = "名字必须指定")
     private String name;
 
     @Max(value = 150, message = "最大岁数为150岁")
@@ -30,7 +31,7 @@ public class User {
     @TableField("create_time")
     private Date createTime;
 
-    @LogicDelete(beforeValue = "0", afterValue = "1")
+    @LogicDelete
     @TableField("is_del")
     private Boolean isDel;
 

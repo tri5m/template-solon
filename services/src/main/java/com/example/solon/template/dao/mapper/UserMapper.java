@@ -1,6 +1,6 @@
 package com.example.solon.template.dao.mapper;
 
-import cn.mybatis.mp.core.mybatis.mapper.MybatisMapper;
+import cn.xbatis.core.mybatis.mapper.MybatisMapper;
 import com.example.solon.template.dao.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

@@ -1,10 +1,13 @@
 package com.example.solon.template.controller;
 
 import cn.hutool.core.io.FileUtil;
+import cn.xbatis.core.sql.executor.chain.QueryChain;
 import com.example.solon.template.common.aop.TokenValidator;
-import com.example.solon.template.common.response.ResponseResult;
 import com.example.solon.template.dao.entity.User;
 import com.example.solon.template.dao.mapper.UserMapper;
+import com.example.solon.template.model.common.response.Paging;
+import com.example.solon.template.model.common.response.ResponseResult;
+import com.example.solon.template.model.ro.SearchRo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +54,17 @@ public class TestController {
         userMapper.save(user);
 
         return ResponseResult.success();
+    }
+
+    @ApiOperation(value = "查询用户列表")
+    @Post
+    @Mapping("/list")
+    public ResponseResult<Paging<User>> list(@Validated @Body SearchRo ro) {
+        return ResponseResult.success(Paging.of(
+                QueryChain.of(userMapper)
+                        .forSearch()
+                        .like(User::getName, ro.getKeyword())
+                        .paging(ro.getPager())));
     }
 
     @ApiOperation(value = "测试异常")

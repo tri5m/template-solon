@@ -1,7 +1,7 @@
 package com.example.solon.template.common.filter;
 
 import com.example.solon.template.common.helper.exception.AppException;
-import com.example.solon.template.common.response.ResponseResult;
+import com.example.solon.template.model.common.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.noear.solon.annotation.Component;
 import org.noear.solon.core.exception.StatusException;
@@ -35,8 +35,10 @@ public class AppFilter implements Filter {
             } else if (e.getCode() == 405) {
                 ctx.render(ResponseResult.error("不支持的http方法:" + ctx.method(), e.getCode()));
             } else if (e.getCode() == 400) {
+                log.warn(e.getMessage());
                 ctx.render(ResponseResult.error(e.getMessage(), e.getCode()));
             } else {
+                log.error(e.getMessage(), e);
                 ctx.render(ResponseResult.error(e.getMessage(), e.getCode()));
             }
         } catch (AppException e) {

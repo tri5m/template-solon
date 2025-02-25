@@ -1,6 +1,9 @@
-package com.example.solon.template.common.request;
+package com.example.solon.template.model.common.request;
 
+import cn.xbatis.core.mybatis.mapper.context.Pager;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.example.solon.template.common.enumeration.OrderType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -34,4 +37,10 @@ public class PageCondition {
     @ApiModelProperty(value = "排序方式", example = "asc,desc", dataType = "string")
     private OrderType order;
 
+    @JsonIgnore
+    @JSONField(serialize = false, deserialize = false)
+    public <T> Pager<T> getPager() {
+
+        return new Pager<>(pageIndex, pageSize);
+    }
 }

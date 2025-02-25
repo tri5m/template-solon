@@ -8,3 +8,7 @@ database:
 
 knife4j:
   enable: false
+
+solon.logging.logger:
+  "cn.xbatis":
+    level: INFO

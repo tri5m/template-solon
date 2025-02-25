@@ -1,4 +1,4 @@
-package com.example.solon.template.common.response;
+package com.example.solon.template.model.common.response;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
