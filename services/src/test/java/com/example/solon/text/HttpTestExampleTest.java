@@ -23,8 +23,7 @@ public class HttpTestExampleTest extends HttpTester {
     @Test
     @Rollback
     public void get() throws IOException {
-        String s = path("/api/get-user?id=1")
-                .get();
+        String s = path("/api/test/get-user?id=1").get();
         System.out.println(s);
     }
 }
