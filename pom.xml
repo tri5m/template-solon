@@ -24,7 +24,7 @@
         <lombok.version>1.18.24</lombok.version>
         <junit.version>4.12</junit.version>
         <solon.version>3.0.9</solon.version>
-        <xbatis.version>1.8.2</xbatis.version>
+        <xbatis.version>1.8.3</xbatis.version>
     </properties>
 
     <dependencyManagement>
